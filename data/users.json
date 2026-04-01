@@ -1,0 +1,50 @@
+[
+    {
+        "id": "u_69b6f71c56f830.01370566",
+        "name": "Олег Малышев",
+        "email": "qvoste@gmail.com",
+        "phone": "+7 995 175-13-28",
+        "password": "$2y$10$iSwoqpO\/BuzuEGBMvV1lqeZqoTDQYCCA1g31Y39SIqDxc3poCAYE2",
+        "created_at": "2026-03-15 19:14:52"
+    },
+    {
+        "id": "u_69c15ed765d259.66934413",
+        "name": "Олег Малышев",
+        "email": "xvoste@gmail.com",
+        "phone": "+7 995 175-13-28",
+        "password": "$2y$10$bgjthuBO09UzOZtOjtN\/W.2MmnJTCdIXVOyKRwvqII3AbmS\/pcaDu",
+        "created_at": "2026-03-23 16:40:07"
+    },
+    {
+        "id": "u_69c1d28aa86fa2.58030789",
+        "name": "Олег Малышев",
+        "email": "qxoste@gmail.com",
+        "phone": "+7 995 175-13-28",
+        "password": "$2y$10$8497Fys2u\/XYDTwmgG6rduyUKhGHE\/hSheKsLzZXMCwFubj4wuh42",
+        "created_at": "2026-03-24 00:53:46"
+    },
+    {
+        "id": "u_69c555b725b0f3.15659729",
+        "name": "Олег Малышев",
+        "email": "voste@gmail.com",
+        "phone": "+7 995 175-13-28",
+        "password": "$2y$10$mYqKmtxooDYZXwmiC4Egt.jag6eKuNp61hRYsDPj6qOtTMJy.jxAu",
+        "created_at": "2026-03-26 16:50:15"
+    },
+    {
+        "id": "u_69cd58d592f2f0.00504424",
+        "name": "Олег Малышев",
+        "email": "oste@gmail.com",
+        "phone": "+7 995 175-13-28",
+        "password": "$2y$10$DGp8cTF7o3nvvBUbp66z2eNlCquHn3Bh3BdqZgetbkIg4Zfu9FrAO",
+        "created_at": "2026-04-01 19:41:41"
+    },
+    {
+        "id": "u_69cd613f47bdc8.50602756",
+        "name": "Олег Малышев",
+        "email": "qvost@gmail.com",
+        "phone": "+7 995 175-13-28",
+        "password": "$2y$10$mVlKhl0HkLbeIUlr7A1jfOeVU0ahUYx7cBSSaaqQWD6XT0MM.QcdC",
+        "created_at": "2026-04-01 20:17:35"
+    }
+]

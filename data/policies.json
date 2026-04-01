@@ -1,0 +1,62 @@
+[
+    {
+        "id": "p_69c15ee96b6513.01064305",
+        "user_id": "u_69c15ed765d259.66934413",
+        "type": "health_basic",
+        "name": "Базовая медицинская",
+        "category": "health",
+        "category_name": "Здоровье",
+        "price": 3500,
+        "period": "мес.",
+        "status": "pending",
+        "created_at": "2026-03-23 16:40:25"
+    },
+    {
+        "id": "p_69c15ef085f3a6.92323456",
+        "user_id": "u_69c15ed765d259.66934413",
+        "type": "auto_osago",
+        "name": "ОСАГО+",
+        "category": "auto",
+        "category_name": "Авто",
+        "price": 1100,
+        "period": "мес.",
+        "status": "pending",
+        "created_at": "2026-03-23 16:40:32"
+    },
+    {
+        "id": "p_69c1d2954e3e99.65108924",
+        "user_id": "u_69c1d28aa86fa2.58030789",
+        "type": "health_critical",
+        "name": "Критические заболевания",
+        "category": "health",
+        "category_name": "Здоровье",
+        "price": 2100,
+        "period": "мес.",
+        "status": "pending",
+        "created_at": "2026-03-24 00:53:57"
+    },
+    {
+        "id": "p_69cd614237e688.85088778",
+        "user_id": "u_69cd613f47bdc8.50602756",
+        "type": "auto_osago",
+        "name": "ОСАГО+",
+        "category": "auto",
+        "category_name": "Авто",
+        "price": 1100,
+        "period": "мес.",
+        "status": "pending",
+        "created_at": "2026-04-01 20:17:38"
+    },
+    {
+        "id": "p_69cd614f31fc63.74884974",
+        "user_id": "u_69cd613f47bdc8.50602756",
+        "type": "property_home",
+        "name": "Страхование жилья",
+        "category": "property",
+        "category_name": "Имущество",
+        "price": 1800,
+        "period": "мес.",
+        "status": "pending",
+        "created_at": "2026-04-01 20:17:51"
+    }
+]

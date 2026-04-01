@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профиль — SafePeak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/profile.css">
+</head>
+<body>
+
+<!-- ─── ШАПКА ─── -->
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-ico">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      Safe<span style="color:var(--accent)">Peak</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html"     class="nav-link">Главная</a>
+      <a href="insurance.html" class="nav-link">Страхование</a>
+      <a href="profile.html"   class="nav-link active" data-authed style="display:none">Профиль</a>
+      <span class="nav-auth" id="nav-auth">
+        <a href="#" class="btn btn-sm" id="nav-login-btn" data-guest>Войти</a>
+        <span data-authed class="nav-user-wrap" style="display:none">
+          <div class="nav-avatar" data-uinit id="avatarBtn"></div>
+          <span class="nav-uname" data-uname></span>
+        </span>
+      </span>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="avatar-drop" id="avatarDrop">
+  <a href="profile.html">👤 Мой профиль</a>
+  <button id="logout-btn">← Выйти</button>
+</div>
+
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="index.html">Главная</a>
+  <a href="insurance.html">Страхование</a>
+  <a href="profile.html" data-authed style="display:none">Профиль</a>
+  <a href="#" id="mob-login-btn" data-guest>Войти</a>
+  <button id="logout-btn-mob" data-authed style="display:none">← Выйти</button>
+</div>
+
+<!-- ─── AUTH WALL (показывается если не авторизован) ─── -->
+<div class="page-wrap" id="authWall" style="display:none">
+  <div class="auth-wall">
+    <div class="auth-wall-box fade-up">
+      <div class="auth-wall-ico">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="1.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <h2 class="auth-wall-title">Войдите в аккаунт</h2>
+      <p class="auth-wall-sub">Чтобы просматривать профиль и свои страховые заявки, необходимо авторизоваться.</p>
+      <div class="auth-wall-btns">
+        <button class="btn btn-lg" id="wallLoginBtn">Войти</button>
+        <button class="btn btn-outline btn-lg" id="wallRegisterBtn">Регистрация</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PROFILE CONTENT ─── -->
+<div class="page-wrap" id="profileContent" style="display:none">
+
+  <!-- Hero -->
+  <section class="profile-hero">
+    <div class="container">
+      <div class="profile-hero-inner">
+        <div class="profile-big-avatar" data-uinit></div>
+        <div class="profile-hero-text">
+          <div class="profile-hero-name" data-uname></div>
+          <div class="profile-hero-since" id="heroSince"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layout -->
+  <section class="container">
+    <div class="profile-layout">
+
+      <!-- Sidebar -->
+      <aside class="profile-sidebar">
+
+        <!-- Данные -->
+        <div class="pcard">
+          <div class="pcard-title">Личные данные</div>
+          <div class="pinfo-row">
+            <div class="pinfo-label">ФИО</div>
+            <div class="pinfo-value" id="pName">—</div>
+          </div>
+          <div class="pinfo-row">
+            <div class="pinfo-label">Email</div>
+            <div class="pinfo-value" id="pEmail">—</div>
+          </div>
+          <div class="pinfo-row">
+            <div class="pinfo-label">Телефон</div>
+            <div class="pinfo-value" id="pPhone">—</div>
+          </div>
+          <div class="pinfo-row">
+            <div class="pinfo-label">Аккаунт создан</div>
+            <div class="pinfo-value" id="pSince">—</div>
+          </div>
+        </div>
+
+        <!-- Статистика -->
+        <div class="pcard">
+          <div class="pcard-title">Статистика</div>
+          <div class="pstats-grid">
+            <div class="pstat-box">
+              <span class="pstat-num" id="statTotal">0</span>
+              <span class="pstat-lbl">Всего заявок</span>
+            </div>
+            <div class="pstat-box">
+              <span class="pstat-num" id="statPending">0</span>
+              <span class="pstat-lbl">На рассмотрении</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Кнопка выйти -->
+        <button class="btn btn-outline btn-full" id="profileLogoutBtn" style="margin-top:4px">← Выйти</button>
+
+      </aside>
+
+      <!-- Main -->
+      <main class="profile-main">
+        <div class="profile-tabs">
+          <button class="ptab active" data-panel="policies">Мои заявки</button>
+          <button class="ptab" data-panel="info">Информация</button>
+        </div>
+
+        <!-- Панель: заявки -->
+        <div class="ptab-panel active" id="panel-policies">
+          <div class="profile-loading" id="policiesLoading">
+            <span class="spin" style="border-color:rgba(253,229,41,.2);border-top-color:var(--accent)"></span>
+            Загружаем заявки...
+          </div>
+          <div id="policiesList" style="display:none"></div>
+        </div>
+
+        <!-- Панель: инфо -->
+        <div class="ptab-panel" id="panel-info">
+          <div class="pcard" style="margin-top:24px">
+            <div class="pcard-title">Контактная информация</div>
+            <div style="display:flex;flex-direction:column;gap:0">
+              <div class="pinfo-row">
+                <div class="pinfo-label">Полное имя</div>
+                <div class="pinfo-value" id="pName2">—</div>
+              </div>
+              <div class="pinfo-row">
+                <div class="pinfo-label">Email-адрес</div>
+                <div class="pinfo-value" id="pEmail2">—</div>
+              </div>
+              <div class="pinfo-row">
+                <div class="pinfo-label">Телефон для связи</div>
+                <div class="pinfo-value" id="pPhone2">—</div>
+              </div>
+            </div>
+          </div>
+          <div class="pcard" style="margin-top:16px">
+            <div class="pcard-title">О профиле</div>
+            <p style="font-size:14px;color:var(--txt2);line-height:1.7;">
+              Менеджер SafePeak будет использовать ваш номер телефона и email для связи по страховым заявкам.
+              Если вы хотите изменить контактные данные — свяжитесь с нами по телефону
+              <a href="tel:+74951234567" style="color:var(--accent);text-decoration:none">+7 (495) 123-45-67</a>
+              или напишите на
+              <a href="mailto:info@safepeak.ru" style="color:var(--accent);text-decoration:none">info@safepeak.ru</a>.
+            </p>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </section>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          Safe<span style="color:var(--accent)">Peak</span>
+        </a>
+        <p class="footer-desc">Надёжная страховая защита с 2009 года. Лицензия ЦБ РФ № 1204.</p>
+      </div>
+      <div>
+        <div class="footer-col-ttl">Навигация</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="insurance.html">Страхование</a></li>
+          <li><a href="profile.html">Профиль</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-ttl">Связаться</div>
+        <ul class="footer-links">
+          <li><a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
+          <li><a href="mailto:info@safepeak.ru">info@safepeak.ru</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 SafePeak. Все права защищены.</span>
+      <span>Лицензия ЦБ РФ № 1204</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/api.js"></script>
+<script src="assets/js/ui.js"></script>
+<script>
+const POLICY_ICONS = {
+  health:   `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+  property: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+  auto:     `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h5l3 3v5h-8V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+  life:     `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  travel:   `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+};
+
+function fillUserData(u) {
+  // Hero
+  document.querySelectorAll('[data-uinit]').forEach(el => el.textContent = u.name.charAt(0).toUpperCase());
+  document.querySelectorAll('[data-uname]').forEach(el => el.textContent = u.name);
+  document.getElementById('heroSince').textContent =
+    'Клиент с ' + new Date(u.created_at).toLocaleDateString('ru', { year:'numeric', month:'long' });
+
+  // Sidebar
+  document.getElementById('pName').textContent   = u.name;
+  document.getElementById('pEmail').textContent  = u.email;
+  document.getElementById('pPhone').textContent  = u.phone || '—';
+  document.getElementById('pSince').textContent  = new Date(u.created_at).toLocaleDateString('ru');
+
+  // Info panel
+  document.getElementById('pName2').textContent  = u.name;
+  document.getElementById('pEmail2').textContent = u.email;
+  document.getElementById('pPhone2').textContent = u.phone || 'не указан';
+}
+
+async function loadPolicies() {
+  const { ok, data } = await API.policies.my();
+  document.getElementById('policiesLoading').style.display = 'none';
+  const list = document.getElementById('policiesList');
+  list.style.display = '';
+
+  if (!ok || !data.policies || !data.policies.length) {
+    list.innerHTML = `
+      <div class="profile-empty">
+        <div class="profile-empty-ico">📋</div>
+        <div class="profile-empty-ttl">Заявок пока нет</div>
+        <div class="profile-empty-sub">Выберите страховой продукт и подайте первую заявку</div>
+        <a href="insurance.html" class="btn" style="margin-top:20px">Перейти к страхованию</a>
+      </div>`;
+
+    document.getElementById('statTotal').textContent   = '0';
+    document.getElementById('statPending').textContent = '0';
+    return;
+  }
+
+  const policies = data.policies;
+  const pending  = policies.filter(p => p.status === 'pending').length;
+  document.getElementById('statTotal').textContent   = policies.length;
+  document.getElementById('statPending').textContent = pending;
+
+  const BADGE = {
+    pending:  '<span class="badge badge-pending">На рассмотрении</span>',
+    active:   '<span class="badge badge-success">Активен</span>',
+    expired:  '<span class="badge badge-grey">Истёк</span>',
+  };
+
+  list.innerHTML = `<div class="policies-list">` +
+    policies.reverse().map(p => `
+      <div class="policy-card fade-up">
+        <div class="policy-card-ico">${POLICY_ICONS[p.category] || ''}</div>
+        <div class="policy-card-info">
+          <div class="policy-card-name">${p.name}</div>
+          <div class="policy-card-cat">${p.category_name} · ${BADGE[p.status] || ''}</div>
+        </div>
+        <div class="policy-card-meta">
+          <div class="policy-card-price">${p.price.toLocaleString('ru')} ₽ <span style="font-size:12px;color:var(--txt2);font-weight:400">/ ${p.period}</span></div>
+          <div class="policy-card-date">${new Date(p.created_at).toLocaleDateString('ru', { day:'2-digit', month:'short', year:'numeric' })}</div>
+        </div>
+      </div>`).join('') +
+  `</div>`;
+
+  initFadeUp();
+}
+
+// ─── Tabs ────────────────────────────────────────────────────────────
+document.querySelectorAll('.ptab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.ptab-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+  });
+});
+
+// ─── Init ────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+  AuthModal.init();
+  initNav();
+
+  await AuthState.check();
+
+  if (!AuthState.loggedIn()) {
+    document.getElementById('authWall').style.display    = '';
+    document.getElementById('profileContent').style.display = 'none';
+
+    document.getElementById('wallLoginBtn').addEventListener('click',    () => AuthModal.open('login'));
+    document.getElementById('wallRegisterBtn').addEventListener('click', () => AuthModal.open('register'));
+
+    window.addEventListener('auth:in', async () => {
+      document.getElementById('authWall').style.display    = 'none';
+      document.getElementById('profileContent').style.display = '';
+      fillUserData(AuthState.user);
+      initFadeUp();
+      await loadPolicies();
+    });
+  } else {
+    document.getElementById('authWall').style.display    = 'none';
+    document.getElementById('profileContent').style.display = '';
+    fillUserData(AuthState.user);
+    initFadeUp();
+    await loadPolicies();
+  }
+
+  document.getElementById('profileLogoutBtn').addEventListener('click', () => AuthState.logout());
+});
+</script>
+</body>
+</html>

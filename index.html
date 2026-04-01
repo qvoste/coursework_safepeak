@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafePeak — Надёжное страхование</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+
+<!-- ─── ШАПКА ─── -->
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-ico">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      Safe<span style="color:var(--accent)">Peak</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html"     class="nav-link active">Главная</a>
+      <a href="insurance.html" class="nav-link">Страхование</a>
+      <a href="profile.html"   class="nav-link" data-authed style="display:none">Профиль</a>
+      <span class="nav-auth" id="nav-auth">
+        <a href="#" class="btn btn-sm" id="nav-login-btn" data-guest>Войти</a>
+        <span data-authed class="nav-user-wrap" style="display:none">
+          <div class="nav-avatar" data-uinit id="avatarBtn"></div>
+          <span class="nav-uname" data-uname></span>
+        </span>
+      </span>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="avatar-drop" id="avatarDrop">
+  <a href="profile.html">👤 Мой профиль</a>
+  <button id="logout-btn">← Выйти</button>
+</div>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Главная</a>
+  <a href="insurance.html">Страхование</a>
+  <a href="profile.html" data-authed style="display:none">Профиль</a>
+  <a href="#" id="mob-login-btn" data-guest>Войти</a>
+  <button id="logout-btn-mob" data-authed style="display:none">← Выйти</button>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="container hero-inner">
+
+    <!-- LEFT -->
+    <div class="hero-text">
+      <div class="hero-tag fade-up">
+        <div class="hero-tag-line"></div>
+        Страховая компания · с 2009 года
+      </div>
+      <h1 class="hero-title fade-up d1">
+        ВАША<br>
+        <span class="line2">УВЕРЕННОСТЬ</span>
+        <span class="line3">В ЗАВТРА</span>
+      </h1>
+      <p class="hero-desc fade-up d2">
+        SafePeak берёт на себя риски, чтобы вы думали только о главном.
+        Страховые продукты для здоровья, имущества, жизни и путешествий.
+      </p>
+      <div class="hero-cta fade-up d3">
+        <a href="insurance.html" class="btn btn-lg">Выбрать полис</a>
+        <a href="#about" class="btn btn-outline btn-lg">О компании</a>
+      </div>
+      <div class="hero-cta-note fade-up d3">Менеджер свяжется в течение 24 ч после заявки</div>
+      <div class="hero-stats fade-up d4">
+        <div class="hstat">
+          <div class="hstat-n"><span data-count="12000">0</span><sup>+</sup></div>
+          <div class="hstat-l">Клиентов</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-n"><span data-count="98">0</span><sup>%</sup></div>
+          <div class="hstat-l">Выплат</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-n"><span data-count="15">0</span></div>
+          <div class="hstat-l">Лет опыта</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-n">24<sup>/7</sup></div>
+          <div class="hstat-l">Поддержка</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: product card -->
+    <div class="hero-panel fade-up d2">
+      <div class="hero-panel-main">
+        <div class="hp-shield">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <div class="hp-title">Комплексная защита</div>
+        <div class="hp-sub">Один аккаунт — все ваши полисы под рукой. Оставьте заявку, менеджер сделает остальное.</div>
+        <div class="hp-coverage">
+          <div class="hp-cov-row"><div class="hp-cov-dot"></div>Здоровье и медицина</div>
+          <div class="hp-cov-row"><div class="hp-cov-dot"></div>Дом и имущество</div>
+          <div class="hp-cov-row"><div class="hp-cov-dot"></div>Авто — КАСКО и ОСАГО+</div>
+          <div class="hp-cov-row"><div class="hp-cov-dot"></div>Жизнь и накопления</div>
+          <div class="hp-cov-row"><div class="hp-cov-dot"></div>Путешествия</div>
+        </div>
+        <div class="hp-badge-row">
+          <span class="hp-badge">Лицензия ЦБ</span>
+          <span class="hp-badge">№ 1204</span>
+          <span class="hp-badge">AAA рейтинг</span>
+        </div>
+      </div>
+      <div class="hero-float hf1">
+        <div class="hero-float-ico">🛡️</div>
+        <div class="hero-float-val">98%</div>
+        <div class="hero-float-lbl">страховых выплат</div>
+      </div>
+      <div class="hero-float hf2">
+        <div class="hero-float-ico">⚡</div>
+        <div class="hero-float-val">24 ч</div>
+        <div class="hero-float-lbl">время ответа</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── TRUST BAR ─── -->
+<div class="trust-bar">
+  <div class="trust-track">
+    <div class="trust-item"><span>✓</span> Лицензия ЦБ РФ</div>
+    <div class="trust-item"><span>✓</span> Рейтинг надёжности AAA</div>
+    <div class="trust-item"><span>✓</span> 15 лет на рынке</div>
+    <div class="trust-item"><span>✓</span> 12 000+ клиентов</div>
+    <div class="trust-item"><span>✓</span> Выплаты за 24 часа</div>
+    <div class="trust-item"><span>✓</span> Персональный менеджер</div>
+    <div class="trust-item"><span>✓</span> Поддержка 24/7</div>
+    <div class="trust-item"><span>✓</span> 98% дел в пользу клиента</div>
+    <!-- дублируем для бесшовного цикла -->
+    <div class="trust-item"><span>✓</span> Лицензия ЦБ РФ</div>
+    <div class="trust-item"><span>✓</span> Рейтинг надёжности AAA</div>
+    <div class="trust-item"><span>✓</span> 15 лет на рынке</div>
+    <div class="trust-item"><span>✓</span> 12 000+ клиентов</div>
+    <div class="trust-item"><span>✓</span> Выплаты за 24 часа</div>
+    <div class="trust-item"><span>✓</span> Персональный менеджер</div>
+    <div class="trust-item"><span>✓</span> Поддержка 24/7</div>
+    <div class="trust-item"><span>✓</span> 98% дел в пользу клиента</div>
+  </div>
+</div>
+
+<!-- ─── О КОМПАНИИ ─── -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Left: numbers -->
+      <div class="fade-up">
+        <div class="section-label">О компании</div>
+        <h2 class="section-title">SafePeak в<br><em>цифрах</em></h2>
+        <p class="section-desc" style="margin-top:16px">
+          За 15 лет мы стали одним из самых надёжных страховщиков страны.
+          Наш приоритет — прозрачность и быстрое урегулирование страховых случаев.
+        </p>
+        <div class="about-numbers">
+          <div class="about-num-box accent-box">
+            <div class="an-val">98%</div>
+            <div class="an-lbl">Страховых случаев урегулированы в пользу клиента</div>
+          </div>
+          <div class="about-num-box">
+            <div class="an-val">15</div>
+            <div class="an-lbl">Лет работы на рынке</div>
+          </div>
+          <div class="about-num-box">
+            <div class="an-val">12K+</div>
+            <div class="an-lbl">Клиентов по всей России</div>
+          </div>
+          <div class="about-num-box">
+            <div class="an-val">24h</div>
+            <div class="an-lbl">Среднее время ответа менеджера</div>
+          </div>
+          <div class="about-num-box">
+            <div class="an-val">5</div>
+            <div class="an-lbl">Видов страхования</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: accordion -->
+      <div class="about-text-block fade-up d2">
+        <div>
+          <div class="section-label">Почему мы</div>
+          <h3 class="section-title" style="font-size:clamp(28px,3.5vw,42px)">Принципы, на<br>которых мы <em>стоим</em></h3>
+        </div>
+        <div class="about-accordion">
+          <div class="acc-item open">
+            <div class="acc-head">
+              Гарантированные выплаты
+              <div class="acc-arr">+</div>
+            </div>
+            <div class="acc-body">
+              Мы не ищем причины отказать. 98% страховых случаев завершаются выплатой.
+              Если случай спорный — на вашей стороне наш юридический отдел.
+            </div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-head">
+              Прозрачные условия
+              <div class="acc-arr">+</div>
+            </div>
+            <div class="acc-body">
+              Никаких скрытых исключений. Перед подписанием менеджер объяснит
+              каждый пункт договора простым языком.
+            </div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-head">
+              Персональный подход
+              <div class="acc-arr">+</div>
+            </div>
+            <div class="acc-body">
+              К каждому клиенту закрепляется персональный менеджер. Он знает вашу
+              ситуацию, историю полисов и всегда доступен по телефону.
+            </div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-head">
+              Финансовая устойчивость
+              <div class="acc-arr">+</div>
+            </div>
+            <div class="acc-body">
+              Рейтинг надёжности AAA — наивысший уровень. Страховые резервы
+              размещены в первоклассных инструментах. Вашим выплатам ничто не угрожает.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── УСЛУГИ (bento) ─── -->
+<section class="services-preview" id="services">
+  <div class="container">
+    <div class="sp-head fade-up">
+      <div>
+        <div class="section-label">Продукты</div>
+        <h2 class="section-title">Виды <em>страхования</em></h2>
+      </div>
+      <a href="insurance.html" class="btn btn-outline">Все варианты →</a>
+    </div>
+    <div class="sp-bento">
+      <a href="insurance.html#health" class="sp-card fade-up d1">
+        <div class="sp-card-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div class="sp-card-name">Здоровье</div>
+        <div class="sp-card-desc">Медицинская страховка, критические заболевания и стоматология.</div>
+        <div class="sp-card-arr">↗</div>
+      </a>
+      <a href="insurance.html#property" class="sp-card sp-wide fade-up d2">
+        <div class="sp-card-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div class="sp-card-body">
+          <div class="sp-card-name">Имущество</div>
+          <div class="sp-card-desc">Жильё, ценные вещи и коммерческая недвижимость — защита от пожара, затопления и кражи.</div>
+        </div>
+        <div class="sp-card-arr">↗</div>
+      </a>
+      <a href="insurance.html#auto" class="sp-card fade-up d3">
+        <div class="sp-card-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2">
+            <rect x="1" y="3" width="15" height="13" rx="2"/>
+            <path d="M16 8h5l3 3v5h-8V8z"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <div class="sp-card-name">Авто</div>
+        <div class="sp-card-desc">КАСКО и ОСАГО+ с юридической поддержкой.</div>
+        <div class="sp-card-arr">↗</div>
+      </a>
+      <a href="insurance.html#life" class="sp-card fade-up d1">
+        <div class="sp-card-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="sp-card-name">Жизнь</div>
+        <div class="sp-card-desc">Срочное страхование и накопительные программы с гарантированным доходом для вашей семьи.</div>
+        <div class="sp-card-arr">↗</div>
+      </a>
+      <a href="insurance.html#travel" class="sp-card fade-up d2">
+        <div class="sp-card-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <div class="sp-card-name">Путешествия</div>
+        <div class="sp-card-desc">Медицинская помощь за рубежом, отмена поездки и потеря багажа.</div>
+        <div class="sp-card-arr">↗</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── КАК РАБОТАЕТ ─── -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Процесс</div>
+      <h2 class="section-title">Полис за <em>4 шага</em></h2>
+    </div>
+    <div class="how-inner fade-up d1">
+      <div class="how-step">
+        <div class="how-step-circle">01</div>
+        <div class="how-step-ttl">Регистрация</div>
+        <div class="how-step-desc">Создайте аккаунт с ФИО, email и номером телефона — это займёт 2 минуты.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-circle">02</div>
+        <div class="how-step-ttl">Выбор полиса</div>
+        <div class="how-step-desc">Перейдите в «Страхование», выберите подходящий продукт и нажмите «Подать заявку».</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-circle">03</div>
+        <div class="how-step-ttl">Звонок менеджера</div>
+        <div class="how-step-desc">В течение 24 часов с вами свяжется персональный менеджер для уточнения деталей.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-circle">04</div>
+        <div class="how-step-ttl">Готово!</div>
+        <div class="how-step-desc">Подпишите договор удобным способом. Полис придёт на email — вы защищены.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── КОМАНДА ─── -->
+<section class="team" id="team">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Команда</div>
+      <h2 class="section-title">Эксперты, которым <em>доверяют</em></h2>
+    </div>
+    <div class="team-scroller">
+      <div class="team-card fade-up d1">
+        <div class="team-card-top">
+          <div class="team-avatar">А</div>
+          <div>
+            <div class="team-name">Алексей Воронов</div>
+            <div class="team-role">Генеральный директор</div>
+          </div>
+        </div>
+        <div class="team-card-body">20 лет в страховании. Основал SafePeak и вырастил компанию до федерального масштаба.</div>
+      </div>
+      <div class="team-card fade-up d2">
+        <div class="team-card-top">
+          <div class="team-avatar">М</div>
+          <div>
+            <div class="team-name">Мария Соколова</div>
+            <div class="team-role">Директор по урегулированию</div>
+          </div>
+        </div>
+        <div class="team-card-body">Руководит командой из 40 специалистов. Под её надзором — 98% дел в пользу клиента.</div>
+      </div>
+      <div class="team-card fade-up d3">
+        <div class="team-card-top">
+          <div class="team-avatar">Д</div>
+          <div>
+            <div class="team-name">Дмитрий Карпов</div>
+            <div class="team-role">Главный актуарий</div>
+          </div>
+        </div>
+        <div class="team-card-body">Разрабатывает страховые продукты с оптимальным балансом цены и покрытия.</div>
+      </div>
+      <div class="team-card fade-up d1">
+        <div class="team-card-top">
+          <div class="team-avatar">Е</div>
+          <div>
+            <div class="team-name">Елена Крылова</div>
+            <div class="team-role">Руководитель клиентской службы</div>
+          </div>
+        </div>
+        <div class="team-card-body">Строит культуру сервиса: каждый клиент получает ответ в срок.</div>
+      </div>
+      <div class="team-card fade-up d2">
+        <div class="team-card-top">
+          <div class="team-avatar">С</div>
+          <div>
+            <div class="team-name">Сергей Нечаев</div>
+            <div class="team-role">Юридический директор</div>
+          </div>
+        </div>
+        <div class="team-card-body">15 лет практики страхового права. Защищает клиентов в любых спорных ситуациях.</div>
+      </div>
+      <div class="team-card fade-up d3">
+        <div class="team-card-top">
+          <div class="team-avatar">Н</div>
+          <div>
+            <div class="team-name">Наталья Орлова</div>
+            <div class="team-role">Финансовый директор</div>
+          </div>
+        </div>
+        <div class="team-card-body">Обеспечивает стабильность резервов — гарантия того, что выплаты всегда возможны.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── КОНТАКТЫ ─── -->
+<section class="contacts" id="contacts">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Контакты</div>
+      <h2 class="section-title">Мы всегда <em>на связи</em></h2>
+    </div>
+    <div class="contacts-layout fade-up d1">
+      <div class="contact-main">
+        <div class="contact-info-row">
+          <div class="ci-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <div class="ci-label">Адрес офиса</div>
+            <div class="ci-value">Москва, ул. Тверская, д. 18, оф. 401</div>
+            <div class="ci-sub">м. Тверская / Пушкинская</div>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <div class="ci-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="ci-label">Телефон</div>
+            <div class="ci-value">+7 (495) 123-45-67</div>
+            <div class="ci-sub">Бесплатно по всей России</div>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <div class="ci-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value">info@safepeak.ru</div>
+            <div class="ci-sub">Ответ в течение рабочего дня</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-hours">
+        <div class="ch-title">Часы работы</div>
+        <div class="hours-list">
+          <div class="hours-row">
+            <span class="hours-day">Понедельник — Пятница</span>
+            <span class="hours-time">09:00 — 19:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Суббота</span>
+            <span class="hours-time">10:00 — 16:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Воскресенье</span>
+            <span class="hours-time closed">Выходной</span>
+          </div>
+        </div>
+        <div class="ch-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,.6)" stroke-width="2.5">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Горячая линия работает 24/7
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner fade-up">
+      <div class="cta-left">
+        <h2 class="section-title">Начните<br>защищать <em>себя</em><br>сегодня</h2>
+        <p>Зарегистрируйтесь бесплатно и оставьте заявку — менеджер свяжется с вами и подберёт оптимальный полис.</p>
+        <div class="cta-btns">
+          <a href="insurance.html" class="btn btn-lg">Выбрать полис</a>
+          <a href="tel:+74951234567" class="btn btn-outline btn-lg">Позвонить</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right-ttl">Почему SafePeak</div>
+        <div class="cta-fact">
+          <div class="cta-fact-ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cta-fact-val">98%</div>
+            <div class="cta-fact-lbl">выплат страховых случаев</div>
+          </div>
+        </div>
+        <div class="cta-fact">
+          <div class="cta-fact-ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cta-fact-val">24 ч</div>
+            <div class="cta-fact-lbl">среднее время ответа менеджера</div>
+          </div>
+        </div>
+        <div class="cta-fact">
+          <div class="cta-fact-ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDE529" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cta-fact-val">12 000+</div>
+            <div class="cta-fact-lbl">клиентов по всей России</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          Safe<span style="color:var(--accent)">Peak</span>
+        </a>
+        <p class="footer-desc">Надёжная страховая защита для вас и вашей семьи с 2009 года. Лицензия ЦБ РФ № 1204.</p>
+      </div>
+      <div>
+        <div class="footer-col-ttl">Навигация</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="insurance.html">Страхование</a></li>
+          <li><a href="profile.html">Профиль</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-ttl">Страхование</div>
+        <ul class="footer-links">
+          <li><a href="insurance.html#health">Здоровье</a></li>
+          <li><a href="insurance.html#property">Имущество</a></li>
+          <li><a href="insurance.html#auto">Авто</a></li>
+          <li><a href="insurance.html#life">Жизнь</a></li>
+          <li><a href="insurance.html#travel">Путешествия</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 SafePeak. Все права защищены.</span>
+      <span>Лицензия ЦБ РФ на осуществление страховой деятельности № 1204</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/api.js"></script>
+<script src="assets/js/ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  AuthModal.init();
+  initNav();
+  initFadeUp();
+  await AuthState.check();
+
+  // Accordion
+  document.querySelectorAll('.acc-head').forEach(head => {
+    head.addEventListener('click', () => {
+      const item = head.closest('.acc-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Animated counters
+  function animateCount(el) {
+    const target = +el.dataset.count;
+    if (!target) return;
+    const step = Math.ceil(target / 55);
+    let cur = 0;
+    const timer = setInterval(() => {
+      cur = Math.min(cur + step, target);
+      el.textContent = cur.toLocaleString('ru');
+      if (cur >= target) clearInterval(timer);
+    }, 22);
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('[data-count]').forEach(animateCount);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const stats = document.querySelector('.hero-stats');
+  if (stats) io.observe(stats);
+});
+</script>
+</body>
+</html>
